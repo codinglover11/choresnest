@@ -1,0 +1,408 @@
+import React from "react";
+import { StyleSheet, Text, StyleProp, ViewStyle } from "react-native";
+import {
+  AlertTriangle,
+  Award,
+  Baby,
+  Bed,
+  Bell,
+  BookOpen,
+  Briefcase,
+  Building,
+  Calendar,
+  CalendarPlus,
+  Camera,
+  Car,
+  Check,
+  CheckCircle,
+  Coffee,
+  Cookie,
+  CheckSquare,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  ClipboardList,
+  Download,
+  Droplet,
+  Drumstick,
+  Edit2,
+  Eye,
+  EyeOff,
+  BellOff,
+  Film,
+  FileText,
+  Folder,
+  Gift,
+  Globe,
+  GraduationCap,
+  Hand,
+  Heart,
+  HelpCircle,
+  Home,
+  Info,
+  Laptop,
+  Leaf,
+  List,
+  Lock,
+  Mail,
+  Menu,
+  Mic,
+  Image,
+  Link,
+  MoreHorizontal,
+  Music,
+  Package,
+  Palette,
+  PartyPopper,
+  PhoneCall,
+  Plane,
+  ListFilter,
+  Plus,
+  Minus,
+  Pill,
+  Search,
+  Settings,
+  ShoppingBag,
+  ShoppingCart,
+  Shield,
+  ShieldCheck,
+  ShieldUser,
+  Shirt,
+  Smile,
+  Smartphone,
+  Sparkles,
+  Star,
+  Sun,
+  Tablet,
+  Trophy,
+  Truck,
+  Utensils,
+  Users,
+  User,
+  Volume2,
+  VolumeX,
+  Wallet,
+  Wrench,
+  Zap,
+  Youtube,
+  BicepsFlexed,
+  Cake,
+  ChefHat,
+  Dog,
+  Moon,
+  X,
+  ArrowRight,
+  TrendingUp,
+  Hospital,
+  Repeat,
+  Tag,
+  MapPin,
+  ChevronDown,
+  RotateCw,
+  GripVertical,
+  ArrowLeft,
+  Trash2,
+  Bookmark,
+  LogOut,
+  AlertCircle,
+  ChevronUp,
+  Play,
+  Pause,
+  Square,
+  MoreVertical,
+} from "lucide-react-native";
+import { theme } from "../../theme";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+
+const ICON_COMPONENTS = {
+  alert: AlertTriangle,
+  alertCircle: AlertCircle,
+  chevronUp: ChevronUp,
+  award: Award,
+  baby: Baby,
+  bed: Bed,
+  bell: Bell,
+  book: BookOpen,
+  bookmark: Bookmark,
+  briefcase: Briefcase,
+  building: Building,
+  calendar: Calendar,
+  calendarPlus: CalendarPlus,
+  camera: Camera,
+  car: Car,
+  check: Check,
+  checkCircle: CheckCircle,
+  checkSquare: CheckSquare,
+  chevronLeft: ChevronLeft,
+  chevronRight: ChevronRight,
+  clock: Clock,
+  coffee: Coffee,
+  cookie: Cookie,
+  clipboard: ClipboardList,
+  download: Download,
+  droplet: Droplet,
+  drumstick: Drumstick,
+  edit: Edit2,
+  eye: Eye,
+  eyeOff: EyeOff,
+  bellOff: BellOff,
+  film: Film,
+  file: FileText,
+  folder: Folder,
+  gift: Gift,
+  globe: Globe,
+  graduation: GraduationCap,
+  hand: Hand,
+  heart: Heart,
+  help: HelpCircle,
+  home: Home,
+  info: Info,
+  laptop: Laptop,
+  leaf: Leaf,
+  list: List,
+  lock: Lock,
+  logOut: LogOut,
+  mail: Mail,
+  menu: Menu,
+  mic: Mic,
+  image: Image,
+  link: Link,
+  more: MoreHorizontal,
+  music: Music,
+  package: Package,
+  palette: Palette,
+  party: PartyPopper,
+  phone: PhoneCall,
+  plane: Plane,
+  plus: Plus,
+  minus: Minus,
+  pill: Pill,
+  search: Search,
+  settings: Settings,
+  shoppingBag: ShoppingBag,
+  shoppingCart: ShoppingCart,
+  shield: Shield,
+  shieldCheck: ShieldCheck,
+  shieldUser: ShieldUser,
+  shirt: Shirt,
+  smile: Smile,
+  smartphone: Smartphone,
+  sparkles: Sparkles,
+  star: Star,
+  sun: Sun,
+  tablet: Tablet,
+  trophy: Trophy,
+  truck: Truck,
+  utensils: Utensils,
+  users: Users,
+  user: User,
+  volume: Volume2,
+  volumeX: VolumeX,
+  wallet: Wallet,
+  wrench: Wrench,
+  zap: Zap,
+  youtube: Youtube,
+  biceps: BicepsFlexed,
+  cake: Cake,
+  chefHat: ChefHat,
+  dog: Dog,
+  moon: Moon,
+  x: X,
+  arrowRight: ArrowRight,
+  trendingUp: TrendingUp,
+  hospital: Hospital,
+  repeat: Repeat,
+  tag: Tag,
+  pin: MapPin,
+  chevronDown: ChevronDown,
+  rotateCw: RotateCw,
+  gripVertical: GripVertical,
+  arrowLeft: ArrowLeft,
+  trash: Trash2,
+  play: Play,
+  pause: Pause,
+  stop: Square,
+  moreVertical: MoreVertical,
+  filter: ListFilter,
+} as const;
+
+export type AppIconName = keyof typeof ICON_COMPONENTS;
+
+export const isAppIconName = (value?: string): value is AppIconName => {
+  if (!value) {
+    return false;
+  }
+  return Object.prototype.hasOwnProperty.call(ICON_COMPONENTS, value as AppIconName);
+};
+
+const EMOJI_ICON_MAP: Record<string, AppIconName> = {
+  "☰": "menu",
+  "≡": "menu",
+  "🔍": "search",
+  "🔔": "bell",
+  "⚙": "settings",
+  "⚙️": "settings",
+  "⚠": "alert",
+  "⚠️": "alert",
+  "⚡": "zap",
+  "✅": "checkCircle",
+  "📅": "calendar",
+  "📆": "calendar",
+  "✉": "mail",
+  "✉️": "mail",
+  "✎": "edit",
+  "✓": "check",
+  "✔": "check",
+  "❓": "help",
+  "❤️": "heart",
+  "❤": "heart",
+  "⬇": "download",
+  "⬇️": "download",
+  "×": "x",
+  "✖": "x",
+  "＋": "plus",
+  "－": "minus",
+  "☀": "sun",
+  "☀️": "sun",
+  "🌙": "moon",
+  "☎": "phone",
+  "☎️": "phone",
+  "📖": "book",
+  "📚": "book",
+  "📜": "book",
+  "📄": "file",
+  "📁": "folder",
+  "📝": "clipboard",
+  "📞": "phone",
+  "📦": "package",
+  "📧": "mail",
+  "📱": "smartphone",
+  "📷": "camera",
+  "🔊": "volume",
+  "🔐": "lock",
+  "🔒": "lock",
+  "🔕": "volumeX",
+  "🔰": "shield",
+  "🗓": "calendar",
+  "😃": "smile",
+  "🙈": "eyeOff",
+  "🚗": "car",
+  "🛏": "bed",
+  "🛒": "shoppingCart",
+  "🛠": "wrench",
+  "🛡": "shield",
+  "🛡️": "shield",
+  "🥗": "leaf",
+  "🥞": "chefHat",
+  "🥣": "utensils",
+  "🥩": "drumstick",
+  "🧑": "user",
+  "🧒": "user",
+  "🧺": "shirt",
+  "👤": "user",
+  "👥": "users",
+  "👪": "users",
+  "👶": "baby",
+  "👨": "user",
+  "👩": "user",
+  "💊": "pill",
+  "💑": "users",
+  "💧": "droplet",
+  "💪": "biceps",
+  "💸": "wallet",
+  "💻": "laptop",
+  "💼": "briefcase",
+  "🍽": "utensils",
+  "🍳": "utensils",
+  "🍝": "chefHat",
+  "🍛": "chefHat",
+  "🍲": "chefHat",
+  "🍚": "utensils",
+  "🎂": "cake",
+  "🎉": "party",
+  "🎓": "graduation",
+  "🎙": "mic",
+  "🎨": "palette",
+  "🎬": "film",
+  "🎵": "music",
+  "🏆": "trophy",
+  "🏠": "home",
+  "🏡": "building",
+  "🏥": "hospital",
+  "🏫": "graduation",
+  "🐶": "dog",
+  "👁": "eye",
+  "👋": "hand",
+  "👑": "award",
+};
+
+interface AppIconProps {
+  name?: AppIconName;
+  source?: string;
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  style?: StyleProp<ViewStyle>;
+}
+
+const isEmojiString = (value?: string): boolean => {
+  if (!value) {
+    return false;
+  }
+  return /\p{Extended_Pictographic}/u.test(value);
+};
+
+export const AppIcon: React.FC<AppIconProps> = ({
+  name,
+  source,
+  size = 20,
+  color,
+  strokeWidth = 1.6,
+  style,
+}) => {
+  // 1. Explicit name prop
+  // 2. Or, if 'source' is an exact key in our icon components (like "calendar")
+  // 3. Or, if 'source' is an emoji mapped in EMOJI_ICON_MAP
+  const iconKey = name ?? (source && source in ICON_COMPONENTS ? (source as AppIconName) : source ? EMOJI_ICON_MAP[source] : undefined);
+  const IconComponent = iconKey ? ICON_COMPONENTS[iconKey] : undefined;
+  if (IconComponent) {
+    return (
+      <IconComponent
+        size={size}
+        color={color ?? theme.colors.foreground}
+        strokeWidth={strokeWidth}
+        style={style}
+      />
+    );
+  }
+  if (source && !isEmojiString(source)) {
+    return (
+      <MaterialCommunityIcons
+        name={source}
+        size={size}
+        color={color ?? theme.colors.foreground}
+        style={style}
+      />
+    );
+  }
+
+  if (source) {
+    return (
+      <Text
+        style={[
+          styles.fallback,
+          { fontSize: size, color: color ?? theme.colors.foreground },
+        ]}
+      >
+        {source}
+      </Text>
+    );
+  }
+  return null;
+};
+
+const styles = StyleSheet.create({
+  fallback: {
+    textAlign: "center",
+  },
+});
